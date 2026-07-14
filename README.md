@@ -24,6 +24,17 @@ For this project, I use the following tools:
 5️⃣ **Microsoft Excel** ➜ The raw data of the dataset is in .csv extension
 
 ## 📊 The Analysis
+### 📶 Skill Prioritization
+TBD
+
+### 💲 Best Paid Jobs
+TBD
+
+### 👨🏻‍🎓 Does Degree Matter?
+TBD
+
+### 📅 Best Month to Apply?
+TBD
 
 ## 🎓 What I learned
 
