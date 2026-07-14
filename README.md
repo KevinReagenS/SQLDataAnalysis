@@ -15,6 +15,14 @@ Here is the full SQL queries that will be analyzed throughout the documentation 
 
 ## 🛠️ Tools I Use
 
+For this project, I use the following tools:
+
+1️⃣ **PostgreSQL** ➜ Core programming language to query the database and answer the questions <br>
+2️⃣ **pgAdmin** ➜ Act as PostgreSQL database <br>
+3️⃣ **Visual Studio Code** ➜ IDE to write the query on <br>
+4️⃣ **GitHub** ➜ Project's version control and host <br>
+5️⃣ **Microsoft Excel** ➜ The raw data of the dataset is in .csv extension
+
 ## 📊 The Analysis
 
 ## 🎓 What I learned
