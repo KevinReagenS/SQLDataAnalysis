@@ -155,7 +155,6 @@ ORDER BY
     average_salary DESC
 ```
 
-📢<span style="background-color: #1a1a1a; color: #e05252; border: 1px solid #e05252; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-weight: bold;">Proof</span>
 | Skill      | Average Salary | Rank (by Job Count)    |
 |------------|----------------:|----------------------:|
 | Ansible    | $159,640        | 166                   |
