@@ -1,7 +1,7 @@
 # SQL for Job Searching Purpose
 
 ## 📝 Introduction
-This project aims to help me (the author) and general readers who want to explore "Data Analyst" roles in the job market, driven by the my desire to transition into the field. Instead of guessing what kind of jobs are best to look for and what skills are worth prioritizing, the data and the analysis presented in this repository will give the answers to the problems.
+<div style="text-align: justify"> This project aims to help me (the author) and general readers who want to explore "Data Analyst" roles in the job market, driven by the my desire to transition into the field. Instead of guessing what kind of jobs are best to look for and what skills are worth prioritizing, the data and the analysis presented in this repository will give the answers to the problems. </div><br>
 
 The dataset used here comes from 🔗[Luke Barousse 2023 Dataset](https://lukeb.co/sql_project_csvs)
 
@@ -74,7 +74,7 @@ ORDER BY
 
 <br>
 🧐 <span style="background-color: #1a1a1a; color: #e05252; border: 1px solid #e05252; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-weight: bold;">Insight</span> <br>
-SQL, Excel, Python, Tableau, and PowerBI come at the top of the list of the most demanded skills at the job market. This confirms those five to be the most foundational skills for any aspiring data analyst. <br>
+<div style="text-align: justify">SQL, Excel, Python, Tableau, and PowerBI come at the top of the list of the most demanded skills at the job market. This confirms those five to be the most foundational skills for any aspiring data analyst. </div><br>
 
 --- 
 #### Top paid skills
@@ -121,7 +121,7 @@ ORDER BY
 
 <br>
 🧐 <span style="background-color: #1a1a1a; color: #e05252; border: 1px solid #e05252; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-weight: bold;">Insight</span> <br>
-Not one skill between the most demanded skills table and top paid skills table is overlapping. This must cause confusion for the readers because now a new question arises, "So, what skills should I learn?" <br>
+<div style="text-align: justify">Not one skill between the most demanded skills table and top paid skills table is overlapping. This must cause confusion for the readers because now a new question arises, "So, what skills should I learn?" </div><br>
 
 ---
 #### Optimal Skills (Demand + Top Salary Integration)
@@ -173,7 +173,7 @@ ORDER BY
 
 <br>
 🛠️ <span style="background-color: #1a1a1a; color: #e05252; border: 1px solid #e05252; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-weight: bold;">Solution</span><br>
-To identify skills that are worth prioritizing, I need to filter out skills with too few job postings, for including them would cause the statistics to be skewed. I can think of two possible solutions, using median demand or mean demand.
+<div style="text-align: justify">To identify skills that are worth prioritizing, I need to filter out skills with too few job postings, for including them would cause the statistics to be skewed. I can think of two possible solutions, using median demand or mean demand.</div><br>
 
 ```sql
 -- Percentile
@@ -206,7 +206,7 @@ FROM
 |------------|--------:|
 | 169        | 2,219   |
 
-The mean displays 13x time higher than the median which implies that this is a heavily right-skewed distribution (top skills: SQL, Excel, Python inflate the average). Using mean as the cut-off would have excluded a vast majority of the skills. So, I will use median for the cut-off value which is 169.
+<div style="text-align: justify">The mean displays 13x time higher than the median which implies that this is a heavily right-skewed distribution (top skills: SQL, Excel, Python inflate the average). Using mean as the cut-off would have excluded a vast majority of the skills. So, I will use median for the cut-off value which is 169.</div><br>
 
 ```sql
 -- Top paid skills
