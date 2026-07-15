@@ -5,7 +5,7 @@
 
 The dataset used here comes from 🔗[Luke Barousse 2023 Dataset](https://lukeb.co/sql_project_csvs)
 
-💡 The guidelines that the author use comes in form of questions:
+💡 The guidelines that I use comes in form of questions:
 1) What skills should I learn first? [Hint: most demanded skills and top paid skills]
 2) Which one has better yearly salary? Remote or on-site? Fulltime or contractor?
 3) Do job postings that don't require a degree still pay competitively?
