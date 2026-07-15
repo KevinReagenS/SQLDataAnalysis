@@ -59,16 +59,16 @@ ORDER BY
 ✅ <span style="background-color: #1a1a1a; color: #e05252; border: 1px solid #e05252; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-weight: bold;">Result</span>
 | Skill     | Total Jobs |
 |-----------|------------|
-| SQL       | 12,345     |
-| Excel     | 10,234     |
-| Python    | 9,876      |
-| Tableau   | 12,345     |
-| Power BI  | 10,234     |
-| R         | 9,876      |
-| SAS       | 12,345     |
-| PowerPoint| 10,234     |
-| Word      | 9,876      |
-| Sap       | 9,876      |
+| SQL       | 79,135     |
+| Excel     | 57,414     |
+| Python    | 47,965     |
+| Tableau   | 39,854     |
+| Power BI  | 33,213     |
+| R         | 25,043     |
+| SAS       | 23,556     |
+| PowerPoint| 11,579     |
+| Word      | 11,381     |
+| Sap       | 9,167      |
 
 <br>
 🧐 <span style="background-color: #1a1a1a; color: #e05252; border: 1px solid #e05252; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-weight: bold;">Insight</span> <br>
