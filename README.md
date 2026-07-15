@@ -46,7 +46,8 @@ INNER JOIN skills_dim AS skills
     ON skills.skill_id = skills_to_job.skill_id
 WHERE
     job_postings.job_title LIKE '%Data%Analyst%' AND
-    job_postings.job_title NOT LIKE '%Senior%'
+    job_postings.job_title NOT LIKE '%Senior%' AND
+    job_postings.job_title NOT LIKE '%Sr%'
 GROUP BY
     skills.skills
 ORDER BY
@@ -60,16 +61,16 @@ ORDER BY
 ✅ <span style="background-color: #1a1a1a; color: #e05252; border: 1px solid #e05252; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-weight: bold;">Result</span>
 | Skill     | Total Jobs |
 |-----------|------------|
-| SQL       | 79,135     |
-| Excel     | 57,414     |
-| Python    | 47,965     |
-| Tableau   | 39,854     |
-| Power BI  | 33,213     |
-| R         | 25,043     |
-| SAS       | 23,556     |
-| PowerPoint| 11,579     |
-| Word      | 11,381     |
-| Sap       | 9,167      |
+| SQL       | 76,120     |
+| Excel     | 55,838     |
+| Python    | 46,441     |
+| Tableau   | 38,264     |
+| Power BI  | 32,309     |
+| R         | 24,149     |
+| SAS       | 22,380     |
+| PowerPoint| 11,122     |
+| Word      | 10,988     |
+| Sap       | 8,885      |
 
 <br>
 🧐 <span style="background-color: #1a1a1a; color: #e05252; border: 1px solid #e05252; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-weight: bold;">Insight</span> <br>
@@ -96,6 +97,7 @@ INNER JOIN skills_dim AS skills
 WHERE
     job_postings.job_title LIKE '%Data%Analyst%' AND
     job_postings.job_title NOT LIKE '%Senior%' AND
+    job_postings.job_title NOT LIKE '%Sr%' AND
     job_postings.salary_year_avg IS NOT NULL
 GROUP BY
     skills.skills
@@ -106,16 +108,16 @@ ORDER BY
 ✅ <span style="background-color: #1a1a1a; color: #e05252; border: 1px solid #e05252; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-weight: bold;">Result</span>
 | Skill      | Average Salary |
 |------------|----------------:|
-| VMware     | $261,250        |
 | Ansible    | $159,640        |
 | DataRobot  | $155,486        |
 | dplyr      | $147,633        |
+| VMware     | $147,500        |
 | Golang     | $145,000        |
 | Twilio     | $138,500        |
 | Puppet     | $129,820        |
 | Perl       | $128,264        |
 | GitLab     | $122,517        |
-| DynamoDB   | $120,000        |
+| Bitbucket  | $116,712        |
 
 <br>
 🧐 <span style="background-color: #1a1a1a; color: #e05252; border: 1px solid #e05252; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-weight: bold;">Insight</span> <br>
@@ -145,6 +147,7 @@ INNER JOIN skills_dim AS skills
 WHERE
     job_postings.job_title LIKE '%Data%Analyst%' AND
     job_postings.job_title NOT LIKE '%Senior%' AND
+    job_postings.job_title NOT LIKE '%Sr%' AND
     job_postings.salary_year_avg IS NOT NULL
 GROUP BY
     skills.skills
@@ -153,18 +156,18 @@ ORDER BY
 ```
 
 📢<span style="background-color: #1a1a1a; color: #e05252; border: 1px solid #e05252; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-weight: bold;">Proof</span>
-| Skill      | Average Salary | Rank (by Job Count) |
-|------------|----------------:|---------------------:|
-| VMware     | $261,250        | 141                   |
+| Skill      | Average Salary | Rank (by Job Count)    |
+|------------|----------------:|----------------------:|
 | Ansible    | $159,640        | 166                   |
-| DataRobot  | $155,486        | 158                   |
-| dplyr      | $147,633        | 131                   |
-| Golang     | $145,000        | 168                   |
-| Twilio     | $138,500        | 152                   |
-| Puppet     | $129,820        | 144                   |
-| Perl       | $128,264        | 84                    |
-| GitLab     | $122,517        | 110                   |
-| DynamoDB   | $120,000        | 126                   |
+| DataRobot  | $155,486        | 156                   |
+| dplyr      | $147,633        | 127                   |
+| VMware     | $147,500        | 161                   |
+| Golang     | $145,000        | 167                   |
+| Twilio     | $138,500        | 139                   |
+| Puppet     | $129,820        | 143                   |
+| Perl       | $128,264        | 82                    |
+| GitLab     | $122,517        | 114                   |
+| Bitbucket  | $116,712        | 108                   |
 
 <br>
 🛠️ <span style="background-color: #1a1a1a; color: #e05252; border: 1px solid #e05252; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-weight: bold;">Solution</span><br>
@@ -184,7 +187,8 @@ WITH skill_counts AS (
         ON skills.skill_id = skills_to_job.skill_id
     WHERE
         job_postings.job_title LIKE '%Data%Analyst%' AND
-        job_postings.job_title NOT LIKE '%Senior%'
+        job_postings.job_title NOT LIKE '%Senior%' AND
+        job_postings.job_title NOT LIKE '%Sr%'
     GROUP BY
         skills.skills
 )
@@ -198,9 +202,9 @@ FROM
 
 | Median     | Mean    |
 |------------|--------:|
-| 173        | 2,304   |
+| 169        | 2,219   |
 
-The mean displays 13x time higher than the median which implies that this is a heavily right-skewed distribution (top skills: SQL, Excel, Python inflate the average). Using mean as the cut-off would have excluded a vast majority of the skills. So, I will use median for the cut-off value which is 173.
+The mean displays 13x time higher than the median which implies that this is a heavily right-skewed distribution (top skills: SQL, Excel, Python inflate the average). Using mean as the cut-off would have excluded a vast majority of the skills. So, I will use median for the cut-off value which is 169.
 
 ```sql
 -- Top paid skills
@@ -216,27 +220,28 @@ INNER JOIN skills_dim AS skills
 WHERE
     job_postings.job_title LIKE '%Data%Analyst%' AND
     job_postings.job_title NOT LIKE '%Senior%' AND
+    job_postings.job_title NOT LIKE '%Sr%' AND
     job_postings.salary_year_avg IS NOT NULL
 GROUP BY
     skills.skills
 HAVING
-    COUNT(job_postings.job_id) > 173
+    COUNT(job_postings.job_id) > 169
 ORDER BY
     average_salary DESC
 ```
 
-| Skill      | Average Salary |
+| Skill      | Average Salary  |
 |------------|----------------:|
-| Snowflake  | $107,943        |
-| Looker     | $102,089        |
-| Oracle     | $100,720        |
-| AWS        | $100,596        |
-| Python     | $100,132        |
-| Azure      | $98,634         |
-| R          | $97,652         |
-| Tableau    | $97,432         |
-| Flow       | $96,905         |
-| SQL        | $95,762         |
+| Snowflake  | $107,539        |
+| Looker     | $100,969        |
+| AWS        | $99,629         |
+| Python     | $99,625         |
+| Oracle     | $98,886         |
+| Azure      | $97,889         |
+| R          | $96,815         |
+| Tableau    | $96,397         |
+| Flow       | $96,181         |
+| SQL        | $94,666         |
 
 ### 💲 Best Paid Jobs
 TBD

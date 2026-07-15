@@ -23,7 +23,8 @@ INNER JOIN skills_dim AS skills
     ON skills.skill_id = skills_to_job.skill_id
 WHERE
     job_postings.job_title LIKE '%Data%Analyst%' AND
-    job_postings.job_title NOT LIKE '%Senior%'
+    job_postings.job_title NOT LIKE '%Senior%' AND
+    job_postings.job_title NOT LIKE '%Sr%'
 GROUP BY
     skills.skills
 ORDER BY
@@ -43,11 +44,12 @@ INNER JOIN skills_dim AS skills
 WHERE
     job_postings.job_title LIKE '%Data%Analyst%' AND
     job_postings.job_title NOT LIKE '%Senior%' AND
+    job_postings.job_title NOT LIKE '%Sr%' AND
     job_postings.salary_year_avg IS NOT NULL
 GROUP BY
     skills.skills
 HAVING
-    COUNT(job_postings.job_id) > 173
+    COUNT(job_postings.job_id) > 169
 ORDER BY
     average_salary DESC
 
@@ -64,7 +66,8 @@ WITH skill_counts AS (
         ON skills.skill_id = skills_to_job.skill_id
     WHERE
         job_postings.job_title LIKE '%Data%Analyst%' AND
-        job_postings.job_title NOT LIKE '%Senior%'
+        job_postings.job_title NOT LIKE '%Senior%' AND
+        job_postings.job_title NOT LIKE '%Sr%'
     GROUP BY
         skills.skills
 )
