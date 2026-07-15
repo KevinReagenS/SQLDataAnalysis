@@ -27,7 +27,7 @@ WHERE
 GROUP BY
     skills.skills
 ORDER BY
-    total_jobs DESC;
+    total_jobs DESC
 
 
 -- Top paid skills
@@ -49,9 +49,9 @@ GROUP BY
 HAVING
     COUNT(job_postings.job_id) > 173
 ORDER BY
-    average_salary DESC;
+    average_salary DESC
 
--- Median skills
+-- Percentile
 WITH skill_counts AS (
     SELECT
         skills.skills,
@@ -71,7 +71,6 @@ WITH skill_counts AS (
 
 SELECT
     PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY total_jobs) AS median_demand,
-    PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY total_jobs) AS p75_demand,
-    AVG(total_jobs) AS avg_demand
+    ROUND(AVG(total_jobs), 0) AS average_demand
 FROM
     skill_counts

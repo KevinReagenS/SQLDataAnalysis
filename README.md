@@ -32,6 +32,7 @@ The most optimal skills could be thoroughly calculated by integrating the most d
 "Which skills appear the most frequently in the dataset?"
 <br> <br>
 👨🏻‍💻 <span style="background-color: #1a1a1a; color: #e05252; border: 1px solid #e05252; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-weight: bold;">Query</span>
+
 ```sql
 -- Most demanded skills
 SELECT
@@ -49,7 +50,7 @@ WHERE
 GROUP BY
     skills.skills
 ORDER BY
-    total_jobs DESC;
+    total_jobs DESC
 ```
 
 🧩 <span style="background-color: #1a1a1a; color: #e05252; border: 1px solid #e05252; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-weight: bold;">Reasoning</span> <br>
@@ -80,6 +81,7 @@ SQL, Excel, Python, Tableau, and PowerBI come at the top of the list of the most
 "Which skills are associated with the highest average yearly salaries?"
 <br> <br>
 👨🏻‍💻 <span style="background-color: #1a1a1a; color: #e05252; border: 1px solid #e05252; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-weight: bold;">Query</span>
+
 ```sql
 -- Top paid skills
 SELECT
@@ -98,7 +100,7 @@ WHERE
 GROUP BY
     skills.skills
 ORDER BY
-    average_salary DESC;
+    average_salary DESC
 ```
 
 ✅ <span style="background-color: #1a1a1a; color: #e05252; border: 1px solid #e05252; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-weight: bold;">Result</span>
@@ -147,7 +149,7 @@ WHERE
 GROUP BY
     skills.skills
 ORDER BY
-    average_salary DESC;
+    average_salary DESC
 ```
 
 📢<span style="background-color: #1a1a1a; color: #e05252; border: 1px solid #e05252; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-weight: bold;">Proof</span>
@@ -164,7 +166,77 @@ ORDER BY
 | GitLab     | $122,517        | 110                   |
 | DynamoDB   | $120,000        | 126                   |
 
+<br>
+🛠️ <span style="background-color: #1a1a1a; color: #e05252; border: 1px solid #e05252; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-weight: bold;">Solution</span><br>
+To identify skills that are worth prioritizing, I need to filter out skills with too few job postings, for including them would cause the statistics to be skewed. I can think of two possible solutions, using median demand or mean demand.
 
+```sql
+-- Percentile
+WITH skill_counts AS (
+    SELECT
+        skills.skills,
+        COUNT(job_postings.job_id) AS total_jobs
+    FROM
+        job_postings_fact AS job_postings
+    INNER JOIN skills_job_dim AS skills_to_job
+        ON skills_to_job.job_id = job_postings.job_id
+    INNER JOIN skills_dim AS skills
+        ON skills.skill_id = skills_to_job.skill_id
+    WHERE
+        job_postings.job_title LIKE '%Data%Analyst%' AND
+        job_postings.job_title NOT LIKE '%Senior%'
+    GROUP BY
+        skills.skills
+)
+
+SELECT
+    PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY total_jobs) AS median_demand,
+    ROUND(AVG(total_jobs), 0) AS average_demand
+FROM
+    skill_counts
+```
+
+| Median     | Mean    |
+|------------|--------:|
+| 173        | 2,304   |
+
+The mean displays 13x time higher than the median which implies that this is a heavily right-skewed distribution (top skills: SQL, Excel, Python inflate the average). Using mean as the cut-off would have excluded a vast majority of the skills. So, I will use median for the cut-off value which is 173.
+
+```sql
+-- Top paid skills
+SELECT
+    skills.skills,
+    ROUND(AVG(job_postings.salary_year_avg), 0) AS average_salary
+FROM
+    job_postings_fact AS job_postings
+INNER JOIN skills_job_dim AS skills_to_job
+    ON skills_to_job.job_id = job_postings.job_id
+INNER JOIN skills_dim AS skills
+    ON skills.skill_id = skills_to_job.skill_id
+WHERE
+    job_postings.job_title LIKE '%Data%Analyst%' AND
+    job_postings.job_title NOT LIKE '%Senior%' AND
+    job_postings.salary_year_avg IS NOT NULL
+GROUP BY
+    skills.skills
+HAVING
+    COUNT(job_postings.job_id) > 173
+ORDER BY
+    average_salary DESC
+```
+
+| Skill      | Average Salary |
+|------------|----------------:|
+| Snowflake  | $107,943        |
+| Looker     | $102,089        |
+| Oracle     | $100,720        |
+| AWS        | $100,596        |
+| Python     | $100,132        |
+| Azure      | $98,634         |
+| R          | $97,652         |
+| Tableau    | $97,432         |
+| Flow       | $96,905         |
+| SQL        | $95,762         |
 
 ### 💲 Best Paid Jobs
 TBD
