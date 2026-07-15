@@ -169,6 +169,8 @@ ORDER BY
 | GitLab     | $122,517        | 114                   |
 | Bitbucket  | $116,712        | 108                   |
 
+👉 The highest ranked skill which is "Perl" doesn't even sit at the top 50. 👈
+
 <br>
 🛠️ <span style="background-color: #1a1a1a; color: #e05252; border: 1px solid #e05252; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-weight: bold;">Solution</span><br>
 To identify skills that are worth prioritizing, I need to filter out skills with too few job postings, for including them would cause the statistics to be skewed. I can think of two possible solutions, using median demand or mean demand.
