@@ -24,7 +24,7 @@ For this project, I use the following tools:
 5️⃣ **Microsoft Excel** ➜ The raw data of the dataset is in .csv extension
 
 ## 📊 The Analysis
-### 📶 Skill Prioritization
+### 📶 Skill Prioritization [SQL File](project_sql/skills_to_learn_first.sql)
 The most optimal skills could be thoroughly calculated by integrating the most demanded skills and the most paid skills.
 
 #### Most demanded skills
