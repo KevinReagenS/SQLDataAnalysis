@@ -244,7 +244,7 @@ ORDER BY
 | Flow       | $96,181         |
 | SQL        | $94,666         |
 
-### 💲 Best Paid Jobs
+### 💲 Best Paid Jobs [SQL File](/project_sql/better_salary_job_type.sql)
 The best paid jobs could be found by combining two factors: job location (remote or on-site) and job type
 
 👨🏻‍💻 <span style="background-color: #1a1a1a; color: #e05252; border: 1px solid #e05252; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-weight: bold;">Query</span>
