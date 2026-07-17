@@ -293,7 +293,7 @@ Unlike the first question, I won't clip the data by applying median total jobs. 
 
 Across all three schedule types with any remote presence (Contractor, Full-time, and Part-time), remote roles show a higher average salary than their on-site counterparts. However, only Full-time has a sample size large enough on both sides to trust this pattern (4,595 on-site vs. 654 remote). Contractor (117 vs. 18) and Part-time (26 vs. 2) show the same directional trend, but the sample size of both job types is simply too small, making it impossible to draw any reliable conclusions.
 
-### 📅 Best Month to Apply?
+### 📅 Best Month to Apply? [SQL File](/project_sql/best_month_apply.sql)
 This question will be the finishing touch of the job-searching journey. After figuring out which skills to prioritize and what job type to aim, the final showdown is to decide when to apply for your dream jobs.
 
 👨🏻‍💻 <span style="background-color: #1a1a1a; color: #e05252; border: 1px solid #e05252; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-weight: bold;">Query</span>
