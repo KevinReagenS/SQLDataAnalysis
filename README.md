@@ -382,4 +382,12 @@ After excluding 2022 (a partial month, not representative) from the dataset, the
 
 ## 🎓 What I learned
 
+Through this project, I strengthened my SQL practical knowledge and developed a more rigorous approach to drawing conclusions from data:<br><br>
+1️⃣ Combined multiple tables using ```JOIN``` and knew when to use ```INNER JOIN``` or ```LEFT JOIN```. Carefully used CTEs and window functions to answer multi-step questions (```ROW_NUMBER()``` AND ```PERCENTILE_CONT```) <br>
+2️⃣ Learnt not to immediately trust raw data without considering sample sizes. Sample size matters! <br>
+3️⃣ Realized that real-world data is messy and contained multiple jumbled data. I learnt to narrow the data and document it with a defensible decision <br>
+
 ## 🎯 Conclusions
+1) The top 10 optimal skills [Optimal Skills (Demand + Top Salary Integration)](#optimal-skills-demand--top-salary-integration) combine market demands and salary. First top 5 of the skills and the latter 5 show a distinct theme: Cloud / BI tools offer premium opportunities than general-purpose programming language
+2) For aspiring data analysts, the combination of full-time and remote job offers the highest salary category among all job types followed by contractor job type, but the claim about contractor's remote salary can't be drawn due to unreliable sample size.
+3) For better preparation, job-seekers should focus their applications in the first half of the year (particularly Q1), which saw the highest posting volume (1,387 jobs). Posting activity declines steadily through the second half of the year, dropping to just 958 jobs by Q4, a ~31% decrease from the year's peak. Note that this pattern is based on a single year of data (2023), so it should be treated as a directional signal rather than a confirmed seasonal trend.
