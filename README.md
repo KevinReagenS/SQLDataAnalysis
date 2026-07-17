@@ -1,7 +1,7 @@
 # SQL for Job Searching Purpose
 
 ## 📝 Introduction
-<div style="text-align: justify"> This project aims to help me (the author) and general readers who want to explore "Data Analyst" roles in the job market, driven by the my desire to transition into the field. Instead of guessing what kind of jobs are best to look for and what skills are worth prioritizing, the data and the analysis presented in this repository will give the answers to the problems. </div><br>
+<div style="text-align: justify"> This project aims to help me (the author) and general readers who want to explore "Data Analyst" roles in the job market, driven by my desire to transition into the field. Instead of guessing what kind of jobs are best to look for and what skills are worth prioritizing, the data and the analysis presented in this repository will give the answers to the problems. </div><br>
 
 The dataset used here comes from 🔗[Luke Barousse 2023 Dataset](https://lukeb.co/sql_project_csvs)
 
@@ -309,7 +309,7 @@ WHERE
     (
         job_title LIKE '%Data%Analyst%' AND
         job_title NOT LIKE '%Senior%' AND
-        job_title NOT LIKE '%Sr&'
+        job_title NOT LIKE '%Sr%'
     ) AND
     salary_year_avg IS NOT NULL AND
     EXTRACT(YEAR FROM job_posted_date::DATE) <> 2022
@@ -330,7 +330,7 @@ WHERE
     (
         job_title LIKE '%Data%Analyst%' AND
         job_title NOT LIKE '%Senior%' AND
-        job_title NOT LIKE '%Sr&'
+        job_title NOT LIKE '%Sr%'
     ) AND
     salary_year_avg IS NOT NULL AND
     EXTRACT(YEAR FROM job_posted_date::DATE) <> 2022
@@ -388,6 +388,6 @@ Through this project, I strengthened my SQL practical knowledge and developed a 
 3️⃣ Realized that real-world data is messy and contained multiple jumbled data. I learnt to narrow the data and document it with a defensible decision <br>
 
 ## 🎯 Conclusions
-1) The top 10 optimal skills [Optimal Skills (Demand + Top Salary Integration)](#optimal-skills-demand--top-salary-integration) combine market demands and salary. First top 5 of the skills and the latter 5 show a distinct theme: Cloud / BI tools offer premium opportunities than general-purpose programming language
+1) The top 10 optimal skills [Optimal Skills (Demand + Top Salary Integration)](#optimal-skills-demand--top-salary-integration) combine market demands and salary. Both the top 5 and bottom 5 skills in this list share a distinct theme: Cloud/BI tools offer premium salaries over general-purpose programming languages.
 2) For aspiring data analysts, the combination of full-time and remote job offers the highest salary category among all job types followed by contractor job type, but the claim about contractor's remote salary can't be drawn due to unreliable sample size.
 3) For better preparation, job-seekers should focus their applications in the first half of the year (particularly Q1), which saw the highest posting volume (1,387 jobs). Posting activity declines steadily through the second half of the year, dropping to just 958 jobs by Q4, a ~31% decrease from the year's peak. Note that this pattern is based on a single year of data (2023), so it should be treated as a directional signal rather than a confirmed seasonal trend.
