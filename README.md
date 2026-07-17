@@ -393,3 +393,8 @@ Through this project, I strengthened my SQL practical knowledge and developed a 
 1) The top 10 optimal skills [Optimal Skills (Demand + Top Salary Integration)](#optimal-skills-demand--top-salary-integration) combine market demands and salary. Both the top 5 and bottom 5 skills in this list share a distinct theme: Cloud/BI tools offer premium salaries over general-purpose programming languages.
 2) For aspiring data analysts, the combination of full-time and remote job offers the highest salary category among all job types followed by contractor job type, but the claim about contractor's remote salary can't be drawn due to unreliable sample size.
 3) For better preparation, job-seekers should focus their applications in the first half of the year (particularly Q1), which saw the highest posting volume (1,387 jobs). Posting activity declines steadily through the second half of the year, dropping to just 958 jobs by Q4, a ~31% decrease from the year's peak. Note that this pattern is based on a single year of data (2023), so it should be treated as a directional signal rather than a confirmed seasonal trend.
+
+## 🕸️ References
+▶️ Youtube: [Luke Barousse](https://www.youtube.com/@LukeBarousse)<br>
+🌐 [SQL Query Execution Order](https://www.sisense.com/blog/sql-query-order-of-operations/)<br>
+🌐 [SQL RANK](https://www.baeldung.com/sql/rank-vs-row-number)
