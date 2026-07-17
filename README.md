@@ -12,6 +12,8 @@ The dataset used here comes from 🔗[Luke Barousse 2023 Dataset](https://lukeb.
 
 Here is the full SQL queries that will be analyzed throughout the documentation [SQL Project](./project_sql)
 
+> 📌 The setup of the database and table is not explained further in this project see [SQL File](/sql_load/)
+
 ## 🛠️ Tools I Use
 
 For this project, I use the following tools:
