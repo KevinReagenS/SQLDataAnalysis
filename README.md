@@ -8,8 +8,7 @@ The dataset used here comes from 🔗[Luke Barousse 2023 Dataset](https://lukeb.
 💡 The guidelines that I use comes in form of questions:
 1) What skills should I learn first? [Hint: most demanded skills and top paid skills]
 2) Which one has better yearly salary? Remote or on-site? Fulltime or contractor?
-3) Do job postings that don't require a degree still pay competitively?
-4) To better prepare before the contract is finished, in what month should I start applying jobs?
+3) To better prepare before the contract is finished, in what month should I start applying jobs?
 
 Here is the full SQL queries that will be analyzed throughout the documentation [SQL Project](./project_sql)
 
@@ -290,13 +289,96 @@ ORDER BY
 
 Unlike the first question, I won't clip the data by applying median total jobs. The reason behind this is when I apply median to this table, almost every job type is eliminated, hence neither comparison nor conlusion could be made from the data.
 
+🧐 <span style="background-color: #1a1a1a; color: #e05252; border: 1px solid #e05252; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-weight: bold;">Insight</span> <br>
+
 Across all three schedule types with any remote presence (Contractor, Full-time, and Part-time), remote roles show a higher average salary than their on-site counterparts. However, only Full-time has a sample size large enough on both sides to trust this pattern (4,595 on-site vs. 654 remote). Contractor (117 vs. 18) and Part-time (26 vs. 2) show the same directional trend, but the sample size of both job types is simply too small, making it impossible to draw any reliable conclusions.
 
-### 👨🏻‍🎓 Does Degree Matter?
-TBD
-
 ### 📅 Best Month to Apply?
-TBD
+This question will be the finishing touch of the job-searching journey. After figuring out which skills to prioritize and what job type to aim, the final showdown is to decide when to apply for your dream jobs.
+
+👨🏻‍💻 <span style="background-color: #1a1a1a; color: #e05252; border: 1px solid #e05252; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-weight: bold;">Query</span>
+
+```sql
+-- Monthly
+SELECT
+    TO_CHAR(job_posted_date::DATE, 'Month') AS month_name,
+    COUNT(job_id) AS total_jobs
+FROM
+    job_postings_fact
+WHERE
+    (
+        job_title LIKE '%Data%Analyst%' AND
+        job_title NOT LIKE '%Senior%' AND
+        job_title NOT LIKE '%Sr&'
+    ) AND
+    salary_year_avg IS NOT NULL AND
+    EXTRACT(YEAR FROM job_posted_date::DATE) <> 2022
+GROUP BY
+    month_name,
+    EXTRACT(MONTH FROM job_posted_date::DATE)
+ORDER BY
+    total_jobs DESC
+
+
+-- Quarterly
+SELECT
+    EXTRACT(QUARTER FROM job_posted_date::DATE) AS quarter,
+    COUNT(job_id) AS total_jobs
+FROM
+    job_postings_fact
+WHERE
+    (
+        job_title LIKE '%Data%Analyst%' AND
+        job_title NOT LIKE '%Senior%' AND
+        job_title NOT LIKE '%Sr&'
+    ) AND
+    salary_year_avg IS NOT NULL AND
+    EXTRACT(YEAR FROM job_posted_date::DATE) <> 2022
+GROUP BY
+    quarter
+ORDER BY
+    total_jobs DESC
+```
+🧩 <span style="background-color: #1a1a1a; color: #e05252; border: 1px solid #e05252; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-weight: bold;">Reasoning</span> <br>
+
+After excluding 2022 (a partial month, not representative) from the dataset, the remaining 12 months of 2023 show a clear downward trend in job posting volume across the year: Q1 leads with 1,387 postings, declining steadily through Q2 (1,308), Q3 (1,191), and Q4 (958). This pattern suggests job-seeker have more opportunities (~31%) than the last three months of the year.
+
+✅ <span style="background-color: #1a1a1a; color: #e05252; border: 1px solid #e05252; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-weight: bold;">Result</span>
+
+<table>
+<tr>
+<td>
+
+| Month     | Total Jobs |
+|-----------|-----------:|
+| January   | 555        |
+| July      | 479        |
+| June      | 476        |
+| August    | 456        |
+| March     | 435        |
+| May       | 419        |
+| April     | 413        |
+| February  | 397        |
+| December  | 383        |
+| November  | 299        |
+| October   | 276        |
+| September | 256        |
+
+</td>
+<td>
+
+| Quarter | Total Jobs |
+|---------|-----------:|
+| Q1      | 1,387      |
+| Q2      | 1,308      |
+| Q3      | 1,191      |
+| Q4      | 958        |
+
+</td>
+</tr>
+</table>
+
+> ⚠️This dataset only spans one calendar year. While the pattern is internally consistent, it can't be confirmed factually as a recurring annual trend, as doing so would require multiple years comparison.
 
 ## 🎓 What I learned
 
