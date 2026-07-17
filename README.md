@@ -245,7 +245,52 @@ ORDER BY
 | SQL        | $94,666         |
 
 ### 💲 Best Paid Jobs
-TBD
+The best paid jobs could be found by combining two factors: job location (remote or on-site) and job type
+
+👨🏻‍💻 <span style="background-color: #1a1a1a; color: #e05252; border: 1px solid #e05252; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-weight: bold;">Query</span>
+```sql
+SELECT
+    job_schedule_type,
+    job_work_from_home,
+    ROUND(AVG(salary_year_avg), 0) AS average_salary,
+    COUNT(job_id) AS total_jobs
+FROM
+    job_postings_fact
+WHERE
+    job_schedule_type IS NOT NULL AND
+    salary_year_avg IS NOT NULL AND
+    (
+        job_title LIKE '%Data%Analyst%' AND
+        job_title NOT LIKE '%Senior' AND
+        job_title NOT LIKE '%Sr%'
+    ) AND
+    job_schedule_type IN ('Full-time', 'Contractor', 'Part-time', 'Internship', 'Temp work')
+GROUP BY
+    job_schedule_type,
+    job_work_from_home
+ORDER BY
+    job_schedule_type,
+    job_work_from_home
+```
+
+✅ <span style="background-color: #1a1a1a; color: #e05252; border: 1px solid #e05252; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-weight: bold;">Result</span>
+
+| Job Schedule Type | Remote (WFH) | Average Salary | Total Jobs    |
+|--------------------|:------------:|----------------:|------------:|
+| Contractor         | FALSE        | $86,357          | 117        |
+| Contractor         | TRUE         | $94,139          | 18         |
+| Full-time          | FALSE        | $95,425          | 4,595      |
+| Full-time          | TRUE         | $97,265          | 654        |
+| Internship         | FALSE        | $79,000          | 7          |
+| Part-time          | FALSE        | $79,559          | 26         |
+| Part-time          | TRUE         | $82,850          | 2          |
+| Temp work          | FALSE        | $72,778          | 9          |
+
+🧩 <span style="background-color: #1a1a1a; color: #e05252; border: 1px solid #e05252; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-weight: bold;">Reasoning</span> <br>
+
+Unlike the first question, I won't clip the data by applying median total jobs. The reason behind this is when I apply median to this table, almost every job type is eliminated, hence neither comparison nor conlusion could be made from the data.
+
+Across all three schedule types with any remote presence (Contractor, Full-time, and Part-time), remote roles show a higher average salary than their on-site counterparts. However, only Full-time has a sample size large enough on both sides to trust this pattern (4,595 on-site vs. 654 remote). Contractor (117 vs. 18) and Part-time (26 vs. 2) show the same directional trend, but the sample size of both job types is simply too few, making it impossible to draw any reliable conclusions.
 
 ### 👨🏻‍🎓 Does Degree Matter?
 TBD

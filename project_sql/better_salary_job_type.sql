@@ -11,17 +11,25 @@ Questions to answer:
 4) To better prepare before the contract is finished, in what month should I start applying jobs?
 */
 
-SELECT DISTINCT
+SELECT
     job_schedule_type,
+    job_work_from_home,
+    ROUND(AVG(salary_year_avg), 0) AS average_salary,
     COUNT(job_id) AS total_jobs
 FROM
-    job_postings_fact AS job_postings
+    job_postings_fact
 WHERE
-    job_schedule_type IS NOT NULL
+    job_schedule_type IS NOT NULL AND
+    salary_year_avg IS NOT NULL AND
+    (
+        job_title LIKE '%Data%Analyst%' AND
+        job_title NOT LIKE '%Senior%' AND
+        job_title NOT LIKE '%Sr%'
+    ) AND
+    job_schedule_type IN ('Full-time', 'Contractor', 'Part-time', 'Internship', 'Temp work')
 GROUP BY
-    job_schedule_type
+    job_schedule_type,
+    job_work_from_home
 ORDER BY
-    total_jobs DESC
-LIMIT 1000
-
-TBD
+    job_schedule_type,
+    job_work_from_home
