@@ -290,7 +290,7 @@ ORDER BY
 
 Unlike the first question, I won't clip the data by applying median total jobs. The reason behind this is when I apply median to this table, almost every job type is eliminated, hence neither comparison nor conlusion could be made from the data.
 
-Across all three schedule types with any remote presence (Contractor, Full-time, and Part-time), remote roles show a higher average salary than their on-site counterparts. However, only Full-time has a sample size large enough on both sides to trust this pattern (4,595 on-site vs. 654 remote). Contractor (117 vs. 18) and Part-time (26 vs. 2) show the same directional trend, but the sample size of both job types is simply too few, making it impossible to draw any reliable conclusions.
+Across all three schedule types with any remote presence (Contractor, Full-time, and Part-time), remote roles show a higher average salary than their on-site counterparts. However, only Full-time has a sample size large enough on both sides to trust this pattern (4,595 on-site vs. 654 remote). Contractor (117 vs. 18) and Part-time (26 vs. 2) show the same directional trend, but the sample size of both job types is simply too small, making it impossible to draw any reliable conclusions.
 
 ### 👨🏻‍🎓 Does Degree Matter?
 TBD
